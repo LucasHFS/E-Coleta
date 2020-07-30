@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@types/react": "^16.9.35",
-    "react-native-picker-select": "^7.0.0"
-  }
-}
