@@ -19,8 +19,8 @@ const Home = () => {
 
   const [ ufs, setUfs] = useState<{}[]>([]);
   const [ cities, setCities] = useState<{}[]>([]);
-  const [ selectedUf, setSelectedUf] = useState<string>('0');
-  const [ selectedCity, setSelectedCity] = useState<string>('0');
+  const [ uf, setUf] = useState<string>('0');
+  const [ city, setCity] = useState<string>('0');
 
   useEffect(() => {
     axios.get<IBGEUFResponse[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome').then(response => {
@@ -36,11 +36,11 @@ const Home = () => {
 
   useEffect(() => {
 
-    if(selectedUf === '0'){
+    if(uf === '0'){
       return;
     }
 
-    axios.get<IBGECityResponse[]>(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios?orderBy=nome`).then(response => {
+    axios.get<IBGECityResponse[]>(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios?orderBy=nome`).then(response => {
       const cityNames = response.data.map(city => city.nome)
 
       const selectorValues = cityNames.map((city) => ({
@@ -51,13 +51,13 @@ const Home = () => {
       setCities(selectorValues);
     });
 
-  }, [selectedUf]);
+  }, [uf]);
 
 
   function handleNavigateToPoints(){
     navigation.navigate('Points',{
-      selectedUf,
-      selectedCity,
+      uf,
+      city,
     });
   }
 
@@ -81,12 +81,12 @@ const Home = () => {
         <View style={styles.footer}>
 
         <RNPickerSelect
-            onValueChange={(uf: string) => setSelectedUf(uf)}
+            onValueChange={(uf: string) => setUf(uf)}
             items={ufs}
         />
 
         <RNPickerSelect
-            onValueChange={(city: string) => setSelectedCity(city)}
+            onValueChange={(city: string) => setCity(city)}
             items={cities}
         />
   
