@@ -75,7 +75,6 @@ const CreatePoint = () => {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords;
-      console.log(position.coords);
       setInitialPosition([latitude, longitude]);
     })
   }, [])

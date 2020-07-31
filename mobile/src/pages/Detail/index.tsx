@@ -27,16 +27,13 @@ interface Data {
 }
 
 const Detail = () => {
-  const [ data, setData ] = useState<Data>({} as Data)
-  
+  const [ data, setData ] = useState<Data>({} as Data);
   const navigation = useNavigation();
   const route = useRoute();
   const routeParams = route.params as Params;
 
   useEffect(() => {
     api.get(`points/${routeParams.point_id}`).then(response => {
-      console.log('response.data');
-      console.log(response.data);
       setData(response.data)
     });
   }, [])
@@ -57,8 +54,6 @@ const Detail = () => {
   }
 
   if(!data.point) {
-    console.log('data');
-    console.log(data);
     return null;
   }
 
@@ -83,12 +78,12 @@ const Detail = () => {
       </View>
       
       <View style={styles.footer}>
-        <RectButton style={styles.button} onPress={()=>{handleWhatsapp}}>
+        <RectButton style={styles.button} onPress={handleWhatsapp}>
           <FontAwesome name="whatsapp" size={20} color="#FFF"/>
           <Text style={styles.buttonText}>Whatsapp</Text>
         </RectButton>
 
-        <RectButton style={styles.button} onPress={()=>{handleComposeMail}}>
+        <RectButton style={styles.button} onPress={handleComposeMail}>
           <Icon name="mail" size={20} color="#FFF"/>
           <Text style={styles.buttonText}>E-mail</Text>
         </RectButton>
