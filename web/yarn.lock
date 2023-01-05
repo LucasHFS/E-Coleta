@@ -8729,7 +8729,6 @@ react-dropzone@^11.0.1:
   version "11.0.2"
   resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-11.0.2.tgz#1a4084f520c2eafbeb24026760b3ee8f3759cfd3"
   integrity sha512-/Wde9Il1aJ1FtWllg3N2taIeJh4aftx6UGUG8R1TmLnZit2RnDcEjcKwEEbKwgLXTTh8QQpiZWQJq45jTy1jCA==
-
   dependencies:
     attr-accept "^2.0.0"
     file-selector "^0.1.12"
